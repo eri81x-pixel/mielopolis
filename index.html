@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mielópolis: productos de la colmena, cosmética natural y experiencias de apicultura sostenible.">
+  <title>Mielópolis | El valor de las abejas</title>
+  <style>
+    :root {
+      --miel: #f2b632;
+      --miel-claro: #fff1c7;
+      --verde: #315b42;
+      --verde-oscuro: #203d2c;
+      --crema: #fffaf0;
+      --texto: #302f27;
+      --blanco: #ffffff;
+      --sombra: 0 12px 30px rgba(49, 91, 66, .12);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--texto);
+      background: var(--crema);
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    .contenedor { width: min(1120px, 92%); margin: 0 auto; }
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(255,250,240,.96);
+      border-bottom: 1px solid #eee2c8;
+      backdrop-filter: blur(10px);
+    }
+    .barra {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 20px; padding: 14px 0;
+    }
+    .marca { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo {
+      display: grid; place-items: center; width: 46px; height: 46px;
+      border-radius: 50%; background: var(--miel); font-size: 25px;
+    }
+    .marca strong { display: block; color: var(--verde-oscuro); font-size: 1.25rem; letter-spacing: .4px; }
+    .marca small { display: block; color: #6d6a5e; font-size: .75rem; }
+    nav { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; }
+    nav a { text-decoration: none; font-weight: 700; font-size: .92rem; }
+    nav a:hover { color: #a96b00; }
+    .boton {
+      display: inline-block; border: 0; border-radius: 999px;
+      background: var(--verde); color: var(--blanco); padding: 12px 20px;
+      text-decoration: none; font-weight: 700; cursor: pointer;
+      transition: transform .2s, background .2s;
+    }
+    .boton:hover { background: var(--verde-oscuro); transform: translateY(-2px); }
+    .boton-amarillo { background: var(--miel); color: var(--verde-oscuro); }
+    .boton-amarillo:hover { background: #e6a51b; }
+    .hero {
+      background: linear-gradient(120deg, #fff4d4 0%, #fffaf0 56%, #e5efdf 100%);
+      padding: 76px 0 68px; overflow: hidden;
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; align-items: center; gap: 44px; }
+    .etiqueta {
+      display: inline-block; background: #fbe5a4; color: var(--verde-oscuro);
+      border-radius: 999px; padding: 7px 13px; font-size: .82rem; font-weight: 700;
+    }
+    h1 { color: var(--verde-oscuro); font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.06; margin: 18px 0; }
+    h2 { color: var(--verde-oscuro); font-size: clamp(1.8rem, 3vw, 2.5rem); line-height: 1.2; margin: 0 0 14px; }
+    h3 { color: var(--verde-oscuro); margin: 12px 0 8px; }
+    .hero p { font-size: 1.1rem; max-width: 590px; color: #555346; }
+    .acciones { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+    .ilustracion {
+      min-height: 330px; display: grid; place-items: center; position: relative;
+      border-radius: 48% 52% 46% 54%; background: #f8d66f;
+      box-shadow: var(--sombra); font-size: clamp(7rem, 15vw, 11rem);
+    }
+    .burbuja {
+      position: absolute; background: var(--blanco); border-radius: 18px;
+      padding: 12px 16px; box-shadow: var(--sombra); font-size: .9rem; font-weight: 700;
+    }
+    .burbuja.uno { top: 16%; left: -5%; }
+    .burbuja.dos { bottom: 12%; right: -4%; }
+    section { padding: 76px 0; scroll-margin-top: 85px; }
+    .centrado { text-align: center; }
+    .intro { max-width: 700px; margin: 0 auto 34px; color: #666254; }
+    .tarjetas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .tarjeta {
+      background: var(--blanco); border: 1px solid #eee5d2; border-radius: 22px;
+      padding: 26px; box-shadow: 0 6px 20px rgba(49,91,66,.05);
+    }
+    .icono {
+      width: 60px; height: 60px; border-radius: 18px; display: grid;
+      place-items: center; background: var(--miel-claro); font-size: 2rem;
+    }
+    .tarjeta p { color: #686557; margin-bottom: 0; }
+    .nosotros { background: #eaf1e6; }
+    .dos-columnas { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; align-items: center; }
+    .lista { list-style: none; padding: 0; margin: 20px 0 0; }
+    .lista li { margin: 12px 0; }
+    .lista li::before { content: "✓"; color: var(--verde); font-weight: 900; margin-right: 10px; }
+    .destacado {
+      background: var(--verde); color: white; padding: 32px; border-radius: 24px;
+    }
+    .destacado h3 { color: #ffe08a; }
+    .destacado p { color: #f2f4ed; }
+    .destacado .numero { font-size: 3rem; }
+    .franja { background: var(--miel-claro); padding: 38px 0; }
+    .franja-contenido { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .franja h2 { margin-bottom: 6px; font-size: 1.8rem; }
+    .faq-lista { max-width: 850px; margin: 30px auto 0; }
+    details { background: white; border: 1px solid #eee5d2; border-radius: 14px; padding: 17px 20px; margin: 12px 0; }
+    summary { cursor: pointer; color: var(--verde-oscuro); font-weight: 700; }
+    details p { color: #686557; margin-bottom: 0; }
+    .contacto { background: #f5f0e3; }
+    .contacto-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 32px; }
+    .datos p { margin: 10px 0; }
+    form { display: grid; gap: 14px; }
+    label { display: block; font-weight: 700; margin-bottom: 5px; }
+    input, textarea, select {
+      width: 100%; padding: 12px 13px; border: 1px solid #d7cfbd;
+      border-radius: 10px; font: inherit; background: white; color: var(--texto);
+    }
+    input:focus, textarea:focus, select:focus { outline: 3px solid #f2b63266; border-color: #b88412; }
+    .aviso { font-size: .86rem; color: #686557; }
+    #mensaje-formulario { min-height: 24px; color: var(--verde); font-weight: 700; }
+    footer { background: var(--verde-oscuro); color: #f8f5eb; padding: 26px 0; }
+    .pie { display: flex; justify-content: space-between; align-items: center; gap: 18px; flex-wrap: wrap; }
+    footer p { margin: 4px 0; }
+    footer a { color: #ffe08a; }
+    @media (max-width: 780px) {
+      .barra { align-items: flex-start; flex-direction: column; }
+      nav { gap: 12px; }
+      .hero { padding: 52px 0; }
+      .hero-grid, .dos-columnas, .contacto-grid { grid-template-columns: 1fr; }
+      .ilustracion { min-height: 260px; width: 88%; margin: 0 auto; }
+      .tarjetas { grid-template-columns: 1fr; }
+      section { padding: 56px 0; }
+      .franja-contenido { align-items: flex-start; flex-direction: column; }
+      .burbuja.uno { left: -2%; }
+      .burbuja.dos { right: -2%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="contenedor barra">
+      <a class="marca" href="#inicio" aria-label="Mielópolis, ir al inicio">
+        <span class="logo" aria-hidden="true">🐝</span>
+        <span><strong>Mielópolis</strong><small>El valor de las abejas</small></span>
+      </a>
+      <nav aria-label="Menú principal">
+        <a href="#nosotros">Nosotros</a>
+        <a href="#productos">Productos y servicios</a>
+        <a href="#compromiso">Nuestro compromiso</a>
+        <a href="#preguntas">Preguntas frecuentes</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="contenedor hero-grid">
+        <div>
+          <span class="etiqueta">Naturaleza · Bienestar · Sostenibilidad</span>
+          <h1>Pequeñas abejas, grandes cambios.</h1>
+          <p>En Mielópolis celebramos el valor de las abejas a través de productos de la colmena, cosmética natural y experiencias que acercan a las personas al fascinante mundo de la apicultura.</p>
+          <div class="acciones">
+            <a class="boton" href="#productos">Conoce lo que hacemos</a>
+            <a class="boton boton-amarillo" href="#contacto">Solicitar información</a>
+          </div>
+        </div>
+        <div class="ilustracion" role="img" aria-label="Ilustración decorativa de una abeja y una flor">
+          🐝
+          <span class="burbuja uno">🍯 Productos de la colmena</span>
+          <span class="burbuja dos">🌼 Cuidamos la biodiversidad</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="nosotros">
+      <div class="contenedor dos-columnas">
+        <div>
+          <span class="etiqueta">Conócenos</span>
+          <h2>Una empresa inspirada en la naturaleza</h2>
+          <p>Mielópolis es una empresa ubicada en Cali, Colombia, dedicada a la producción y comercialización de productos derivados de las abejas, subproductos de la colmena y cosmética natural.</p>
+          <p>También promueve el apadrinamiento de colmenas y el conocimiento de la apicultura como una forma de valorar el papel de las abejas en los ecosistemas.</p>
+        </div>
+        <div class="destacado">
+          <div class="numero" aria-hidden="true">🌿</div>
+          <h3>Nuestro propósito</h3>
+          <p>Acercar los beneficios y la importancia de las abejas a más personas, impulsando prácticas responsables y el cuidado de los polinizadores y la biodiversidad.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="productos" style="background:#fffdf7">
+      <div class="contenedor">
+        <div class="centrado">
+          <span class="etiqueta">Lo que ofrecemos</span>
+          <h2>Descubre el mundo de Mielópolis</h2>
+          <p class="intro">Conoce nuestras líneas de productos y experiencias relacionadas con la colmena. La disponibilidad y los detalles de cada producto deben confirmarse directamente con la empresa.</p>
+        </div>
+        <div class="tarjetas">
+          <article class="tarjeta">
+            <div class="icono" aria-hidden="true">🍯</div>
+            <h3>Productos apícolas</h3>
+            <p>Productos derivados de las abejas y de la colmena, presentados para quienes valoran los regalos de la naturaleza.</p>
+          </article>
+          <article class="tarjeta">
+            <div class="icono" aria-hidden="true">🌸</div>
+            <h3>Cosmética natural</h3>
+            <p>Una línea de cuidado personal inspirada en ingredientes y productos asociados al mundo natural y la colmena.</p>
+          </article>
+          <article class="tarjeta">
+            <div class="icono" aria-hidden="true">🐝</div>
+            <h3>Apadrinamiento de colmenas</h3>
+            <p>Una oportunidad para acercarse a la apicultura y apoyar la valoración y protección de las abejas.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="nosotros" id="compromiso">
+      <div class="contenedor dos-columnas">
+        <div>
+          <span class="etiqueta">Nuestro compromiso</span>
+          <h2>El bienestar también incluye cuidar el planeta</h2>
+          <p>Las abejas y otros polinizadores cumplen una función importante en la naturaleza. Por eso, Mielópolis promueve el conocimiento de la apicultura sostenible y el respeto por la biodiversidad.</p>
+          <ul class="lista">
+            <li>Promoción del cuidado de las abejas y los polinizadores.</li>
+            <li>Divulgación de la importancia de la apicultura.</li>
+            <li>Productos y experiencias relacionados con la colmena.</li>
+          </ul>
+        </div>
+        <div class="tarjeta">
+          <div class="icono" aria-hidden="true">🌻</div>
+          <h3>¿Por qué elegir Mielópolis?</h3>
+          <p>Porque permite conocer productos de la colmena y conectar con una iniciativa que destaca la relación entre las personas, las abejas y la biodiversidad.</p>
+          <p><strong>Una pequeña acción puede ayudar a crear conciencia sobre la naturaleza.</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <div class="franja">
+      <div class="contenedor franja-contenido">
+        <div>
+          <h2>¿Quieres conocer más sobre nuestros productos?</h2>
+          <p>Déjanos tu consulta en el formulario demostrativo de esta página.</p>
+        </div>
+        <a class="boton" href="#contacto">Quiero información</a>
+      </div>
+    </div>
+
+    <section id="preguntas">
+      <div class="contenedor">
+        <div class="centrado">
+          <span class="etiqueta">Te ayudamos</span>
+          <h2>Preguntas frecuentes</h2>
+          <p class="intro">Respuestas generales para orientar a las personas interesadas en Mielópolis.</p>
+        </div>
+        <div class="faq-lista">
+          <details>
+            <summary>¿Qué es Mielópolis?</summary>
+            <p>Es una empresa ubicada en Cali, Colombia, dedicada a productos derivados de las abejas, subproductos de la colmena y cosmética natural, y que promueve la apicultura sostenible.</p>
+          </details>
+          <details>
+            <summary>¿Qué productos y servicios ofrece?</summary>
+            <p>Su oferta incluye productos apícolas, cosmética natural, apadrinamiento de colmenas y actividades relacionadas con la apicultura. La disponibilidad debe consultarse con la empresa.</p>
+          </details>
+          <details>
+            <summary>¿Cómo puedo conocer los precios?</summary>
+            <p>Puedes enviar una consulta mediante el formulario de esta página. Este sitio es una demostración académica, por lo que no transmite la consulta a la empresa.</p>
+          </details>
+          <details>
+            <summary>¿Por qué son importantes las abejas?</summary>
+            <p>Las abejas y otros polinizadores contribuyen a la reproducción de muchas plantas y al mantenimiento de la biodiversidad.</p>
+          </details>
+          <details>
+            <summary>¿Cómo puedo solicitar información sobre el apadrinamiento de colmenas?</summary>
+            <p>Utiliza el formulario demostrativo y especifica que te interesa el apadrinamiento. Para realizar una solicitud real, debes confirmar los canales oficiales de atención de Mielópolis.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="contacto" id="contacto">
+      <div class="contenedor">
+        <div class="centrado">
+          <span class="etiqueta">Hablemos</span>
+          <h2>Contacto y atención al cliente</h2>
+          <p class="intro">Cuéntanos qué te gustaría conocer. Los datos y el formulario de esta página son demostrativos y deben actualizarse con los canales oficiales de la empresa antes de publicarla.</p>
+        </div>
+        <div class="contacto-grid">
+          <div class="tarjeta datos">
+            <h3>Canales de atención</h3>
+            <p>📍 <strong>Ubicación:</strong> Cali, Colombia</p>
+            <p>💬 <strong>Consultas:</strong> formulario de contacto demostrativo</p>
+            <p>🕒 <strong>Horario:</strong> por confirmar con la empresa</p>
+            <p>📧 <strong>Correo y teléfono:</strong> agregar los canales oficiales verificados</p>
+            <hr style="border:0;border-top:1px solid #eee5d2;margin:22px 0">
+            <h3>Política de atención</h3>
+            <p>La información sobre precios, disponibilidad, entregas y características de los productos debe confirmarse antes de realizar una compra. Las consultas reales deben enviarse únicamente por los canales oficiales de Mielópolis.</p>
+          </div>
+          <div class="tarjeta">
+            <form id="formulario-contacto">
+              <div>
+                <label for="nombre">Nombre</label>
+                <input id="nombre" name="nombre" type="text" placeholder="Escribe tu nombre" required>
+              </div>
+              <div>
+                <label for="tema">¿Sobre qué deseas información?</label>
+                <select id="tema" name="tema" required>
+                  <option value="">Selecciona una opción</option>
+                  <option>Productos apícolas</option>
+                  <option>Cosmética natural</option>
+                  <option>Apadrinamiento de colmenas</option>
+                  <option>Otra consulta</option>
+                </select>
+              </div>
+              <div>
+                <label for="mensaje">Tu consulta</label>
+                <textarea id="mensaje" name="mensaje" rows="4" placeholder="Escribe aquí tu pregunta" required></textarea>
+              </div>
+              <button class="boton" type="submit">Preparar consulta</button>
+              <p class="aviso">Aviso: este formulario es solo una demostración para la actividad. No envía ni guarda información.</p>
+              <p id="mensaje-formulario" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="contenedor pie">
+      <div>
+        <p><strong>🐝 Mielópolis</strong> — El valor de las abejas</p>
+        <p>Productos de la colmena, cosmética natural y apicultura sostenible.</p>
+      </div>
+      <p>Proyecto académico creado con apoyo de inteligencia artificial · <span id="anio">2026</span></p>
+    </div>
+  </footer>
+  <script>
+    // Este formulario solo muestra un mensaje; no envía información.
+    document.getElementById("formulario-contacto").addEventListener("submit", function(evento) {
+      evento.preventDefault();
+      document.getElementById("mensaje-formulario").textContent =
+        "¡Gracias! La demostración funciona, pero tu consulta no fue enviada.";
+      this.reset();
+    });
+  </script>
+</body>
+</html>
